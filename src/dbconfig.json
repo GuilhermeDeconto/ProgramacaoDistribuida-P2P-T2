@@ -1,0 +1,14 @@
+{
+    "dev": {
+        "host": "localhost/",
+        "user" : "admin",
+        "password" : "admin",
+        "database": "peer"
+    },
+    "prod": {
+        "host": "localhost/", 
+        "user" : "admin",
+        "password" : "admin",
+        "database": "peer"
+    }
+}

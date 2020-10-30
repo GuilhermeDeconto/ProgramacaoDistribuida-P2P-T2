@@ -1,0 +1,38 @@
+{
+  "name": "programacao-distribuida-p2p-t2",
+  "version": "1.0.0",
+  "description": "Programação Distribuida",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "NODE_ENV=dev nodemon -L index.js",
+    "start:prod": "NODE_ENV=prod node index.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GuilhermeDeconto/ProgramacaoDistribuida-P2P-T2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GuilhermeDeconto/ProgramacaoDistribuida-P2P-T2/issues"
+  },
+  "homepage": "https://github.com/GuilhermeDeconto/ProgramacaoDistribuida-P2P-T2#readme",
+  "dependencies": {
+    "@hapi/basic": "^6.0.0",
+    "@hapi/hapi": "^20.0.0",
+    "@hapi/inert": "^6.0.3",
+    "@hapi/vision": "^6.0.1",
+    "bcrypt": "^5.0.0",
+    "chalk": "^4.1.0",
+    "hapi-swagger": "^14.0.0",
+    "joi": "^17.2.1",
+    "mongoose": "^5.10.6",
+    "node-cron": "^2.0.3",
+    "q": "^1.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
