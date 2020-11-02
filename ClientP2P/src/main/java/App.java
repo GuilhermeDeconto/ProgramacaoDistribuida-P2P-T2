@@ -1,3 +1,5 @@
+import com.google.gson.Gson;
+
 import java.io.*;
 import java.math.BigInteger;
 import java.net.HttpURLConnection;
@@ -19,8 +21,8 @@ public class App {
     public static final String GET_USER_WITH_HASH = "getFileHash";
     public static final String GET_RESOURCES_LIST = "getResources";
     public static final String GET_FILE_FROM_USER = "getFile";
-	public static String endpointServer = "http://576b877de59e.ngrok.io/api/v1/resources";
-	public static String myIp = "13.13.13.13";
+	public static String endpointServer = "http://9039d4a4e3fd.ngrok.io/api/v1/resources";
+	public static String myIp = "192.168.0.8";
 	public static String name = "Daniel_Oliveira";
 	public static String pathFiles = "Arquivos1";
 	public static ArrayList<String[]> files; 
@@ -80,41 +82,66 @@ public class App {
         switch (commands[0]) {
 
             // solicitar recurso especifico
-            // getFile dc6444a370d16433b772d4b7860b110
+            // getFile d4cffa3b48ee3848da861aac7ffbd2f9
             case GET_FILE_FROM_USER:
                 Peer peerWithFile = getClientWithFileHash(commands[1]);
-                //thisPeer.requestFile(commands[1], peerWithFile);
+                thisPeer.requestFile(commands[1], peerWithFile);
                 break;
 
             // saber quem tem recurso especifico
-            // getFileHash dc6444a370d16433b772d4b7860b110
+            // getFileHash d4cffa3b48ee3848da861aac7ffbd2f9
             case GET_USER_WITH_HASH:
-                //System.out.println("Peer que possui arquivo: " + server.getClientWithFileHash(commands[1], thisPeer).getName());
+                System.out.println("Peer que possui arquivo: " + getClientWithFileHash(commands[1]).name + " Ip: " + getClientWithFileHash(commands[1]).address);
                 break;
 
             // solicitar lista de recursos
             // getResources
             case GET_RESOURCES_LIST:
 
-                //files = server.getAllFileHash();
-                //System.out.println("Peer que possui arquivo: " + server.getAllFileHash());
+                ResponseWrapper2 response = getAllFileHash();
+                for (User user : response.data) {
+                    System.out.println(user.toString());
+                }
 
                 break;
 
             // verificar se usuario existe
-            // exist <client_name>
+            // exist Daniel_Oliveira
             case CHECK_IF_EXIST_USER:
-                //System.out.println(server.peerExist(commands[1]));
+                ResponseWrapper user = peerExist(commands[1]);
+                if(user.data != null){
+                    System.out.println("Usuario " + user.data.name + " esta registrado.");
+                } else {
+                    System.out.println("Usuario " + commands[1] + " nao esta registrado.");
+                }
                 break;
         }
     }
-    
+
+    private static ResponseWrapper peerExist(String name) {
+        String response = get(endpointServer + "/peer/name/" + name).get(0);
+        Gson gson = new Gson();
+        ResponseWrapper responseWrapper = gson.fromJson(response, ResponseWrapper.class);
+        return responseWrapper;
+    }
+
+    private static ResponseWrapper2 getAllFileHash() {
+        String response = get(endpointServer).get(0);
+        Gson gson = new Gson();
+        ResponseWrapper2 responseWrapper2 = gson.fromJson(response, ResponseWrapper2.class);
+        return responseWrapper2;
+    }
+
     private static Peer getClientWithFileHash(String hash) {
-    	System.out.println("getClientWithFileHash");
-    	ArrayList<String> response = get(endpointServer + "/peer/file/" + hash);
-    	
-    	
-    	return null;
+    	String response = get(endpointServer + "/peer/file/" + hash).get(0);
+        Gson gson = new Gson();
+        ResponseWrapper responseWrapper = gson.fromJson(response, ResponseWrapper.class);
+
+        HashMap<String, String> userFile = new HashMap<String, String>();
+        for (int i = 0; i < responseWrapper.data.files.size(); i++){
+            userFile.put(responseWrapper.data.files.get(i).hash, responseWrapper.data.files.get(i).name);
+        }
+    	return new Peer(responseWrapper.data.name, responseWrapper.data.ip, userFile);
 	}
 
 	public static void args(String[] args) {

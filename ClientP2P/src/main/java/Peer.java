@@ -24,6 +24,12 @@ public class Peer implements Serializable {
         saveAllFilesPath(pathFiles);
     }
 
+    public Peer(String n, String ip, HashMap<String, String> userFile) {
+        name = n;
+        address = ip;
+        files = userFile;
+    }
+
     public void requestFile(String hashFile, Peer host) throws IOException {
         String pathFile = host.pathByHash(hashFile);
 
