@@ -69,7 +69,7 @@ const swaggerOptions = {
 	grouping: "tags",
 	pathPrefixSize: 2,
 	info: {
-		title: 'Aulas Documentation',
+		title: 'P2P Documentation',
 		version: Pack.version,
 	},
 	tags: [
