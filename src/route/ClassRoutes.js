@@ -67,6 +67,20 @@ module.exports = [
     },
     {
         method: HTTPMethod.GET,
+        path: "/resources/peer/name/{id}",
+        options: {
+            description: "Retuns peer with a given name",
+            notes: "Retuns peer with a given name",
+            tags: ["api", "Peer"],
+            validate: {
+                params: Validator.idParameterValidator,
+                failAction: FailureHandlerController.failureHandler
+            },
+            handler: ResourcesController.getPeerByName
+        }
+    },
+    {
+        method: HTTPMethod.GET,
         path: "/resources/peer/file/{id}",
         options: {
             description: "Retuns peer with a given file",

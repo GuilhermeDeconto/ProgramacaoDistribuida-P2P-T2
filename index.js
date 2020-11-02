@@ -126,9 +126,9 @@ cron.schedule("*/1 * * * * *", async function () {
 		console.log(key)
 		console.log(myMap.get(key))
 		if (myMap.get(key) && myMap.get(key) >= 10) {
-			//myMap.delete(key)
+			myMap.delete(key)
 			console.log("deleted")
-			//await ResourcesService.deletePeerById(key);
+			await ResourcesService.deletePeerById(key);
 		} else {
 			myMap.set(key, value + 1)
 		}

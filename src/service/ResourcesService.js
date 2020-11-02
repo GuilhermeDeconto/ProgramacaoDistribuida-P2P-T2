@@ -39,6 +39,16 @@ const getPeerById = async (payload) => {
     return result;
 }
 
+const getPeerByName = async (payload) => {
+    var result = null;
+    try {
+        result = await ResourceModel.findOne({name: payload});
+    } catch (error) {
+        console.log("error", error)
+    }
+    return result;
+}
+
 const getPeerByFile = async (payload) => {
     var result = null;
     var finalResult = null;
@@ -73,7 +83,7 @@ const insertPeer = async (payload) => {
     }
     return result;
 }
-
+exports.getPeerByName = getPeerByName;
 exports.getPeerByFile = getPeerByFile;
 exports.deletePeerById = deletePeerById;
 exports.getPeerById = getPeerById;

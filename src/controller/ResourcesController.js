@@ -50,6 +50,21 @@ exports.getPeerById = async function (request, resp) {
     }
 }
 
+exports.getPeerByName = async function (request, resp) {
+    try {
+        const contents = await ResourcesService.getPeerByName(request.params.id);
+        
+        var response = {
+            success: true,
+            message: `Peer with name ${request.params.id} retrieved successfully`,
+            data: contents
+        }
+        return resp.response(response);
+    } catch (error) {
+        return resp.response(error).code(500);
+    }
+}
+
 exports.getPeerByFile = async function (request, resp) {
     try {
         const contents = await ResourcesService.getPeerByFile(request.params.id);
