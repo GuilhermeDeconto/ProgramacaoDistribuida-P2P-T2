@@ -1,0 +1,5 @@
+Durante o registro, cada peer informa seus recursos disponíveis (utilize
+um diretório com alguns arquivos, e calcule a hash de cada um). Para cada
+arquivo, o peer fornece ao servidor uma string ou o nome do arquivo e
+sua hash (utilize funções como MD5 ou SHA256, calculada sobre o
+conteúdo de cada arquivo).

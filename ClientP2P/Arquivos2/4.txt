@@ -1,0 +1,4 @@
+Os peers podem solicitar uma lista de recursos (nomes dos arquivos /
+strings de identificação, IPs dos peers que contém os recursos e hashes)
+ao servidor ou um recurso específico. Isso deve ser feito por meio de uma
+REST.

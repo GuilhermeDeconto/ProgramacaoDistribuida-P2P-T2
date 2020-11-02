@@ -1,0 +1,2 @@
+Os peers devem se registrar no servidor para poderem realizar a troca de
+arquivos entre peers. Isso deve ser feito por meio de uma REST

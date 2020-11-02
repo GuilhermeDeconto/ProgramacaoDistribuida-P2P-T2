@@ -1,0 +1,2 @@
+O servidor associa cada recurso em uma estrutura de dados. Cada recurso
+possui associado o IP do peer onde está o recurso e sua hash.

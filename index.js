@@ -125,7 +125,7 @@ cron.schedule("*/1 * * * * *", async function () {
 	for (var [key, value] of myMap) {
 		console.log(key)
 		console.log(myMap.get(key))
-		if (myMap.get(key) && myMap.get(key) >= 5) {
+		if (myMap.get(key) && myMap.get(key) >= 10) {
 			//myMap.delete(key)
 			console.log("deleted")
 			//await ResourcesService.deletePeerById(key);

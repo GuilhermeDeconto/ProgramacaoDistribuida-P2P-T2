@@ -46,7 +46,7 @@ const getPeerByFile = async (payload) => {
     try {
         result = await ResourceModel.find();
         console.log(result.length)
-        if (result.length > 1){
+        if (result.length >= 1){
             for (var i = 0; i < result.length; i++){
                 for (var j = 0; j < result[i].files.length; j++){
                     if (result[i].files[j].hash == payload){
