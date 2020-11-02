@@ -1,3 +1,5 @@
+package com.company;
+
 import java.util.ArrayList;
 
 public class User {
@@ -7,7 +9,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "com.company.User{" +
                 "ip='" + ip + '\'' +
                 ", name='" + name + '\'' +
                 ", files=" + files +

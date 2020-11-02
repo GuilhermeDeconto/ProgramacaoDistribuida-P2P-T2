@@ -1,3 +1,5 @@
+package com.company;
+
 import com.google.gson.Gson;
 
 import java.io.*;
@@ -91,7 +93,7 @@ public class App {
             // saber quem tem recurso especifico
             // getFileHash d4cffa3b48ee3848da861aac7ffbd2f9
             case GET_USER_WITH_HASH:
-                System.out.println("Peer que possui arquivo: " + getClientWithFileHash(commands[1]).name + " Ip: " + getClientWithFileHash(commands[1]).address);
+                System.out.println("com.company.Peer que possui arquivo: " + getClientWithFileHash(commands[1]).name + " Ip: " + getClientWithFileHash(commands[1]).address);
                 break;
 
             // solicitar lista de recursos
