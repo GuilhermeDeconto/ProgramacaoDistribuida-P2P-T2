@@ -2,7 +2,7 @@
 
 var Hapi = require('@hapi/hapi');
 var constants = require('./src/config/constants.js');
-var routes = require('./src/route/ClassRoutes');
+var routes = require('./src/route/ResourcesRoutes');
 const Inert = require('@hapi/inert');
 const Vision = require('@hapi/vision');
 const HapiBasicAuth = require('@hapi/basic');
